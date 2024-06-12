@@ -1,0 +1,591 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+:root {
+  --primary-color: #e06951;
+  --text-dark: #111827;
+  --text-light: #6b7280;
+  --white: #ffffff;
+  --max-width: 1200px;
+}
+
+
+a {
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+html,
+body {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+
+  background-size: contain;
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-image: url('assets/jogja.jpg'); /* Ganti 'nama_file_gambar.jpg' dengan path atau URL gambar Anda */
+  background-size: contain; /* Menyesuaikan ukuran gambar dengan ukuran elemen */
+  font-family: "Poppins", sans-serif;
+  
+}
+
+nav {
+  position: fixed;
+  isolation: isolate;
+  width: 100%;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  z-index: 9;
+}
+
+.nav__header {
+  padding: 1rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--text-dark);
+}
+
+.nav__logo .logo {
+  color: var(--white);
+}
+
+.nav__menu__btn {
+  font-size: 1.5rem;
+  color: var(--white);
+  cursor: pointer;
+}
+
+.nav__links {
+  position: absolute;
+  top: 65px;
+  left: 0;
+  width: 100%;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem;
+  background-color: var(--text-dark);
+  transition: 0.5s;
+  z-index: -1;
+  transform: translateY(-100%);
+}
+
+.nav__links.open {
+  transform: translateY(0);
+}
+
+.nav__links a {
+  font-weight: 500;
+  white-space: nowrap;
+  color: var(--white);
+}
+
+.nav__links a:hover {
+  color: var(--primary-color);
+}
+
+
+@media (width > 768px) {
+  nav {
+    position: static;
+    padding-block: 2rem 0;
+    padding-inline: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  .nav__header {
+    padding: 0;
+    background-color: transparent;
+  }
+
+  .nav__logo .logo {
+    color: var(--text-dark);
+    width: 25%; 
+    height: auto; 
+  }
+
+  .nav__menu__btn {
+    display: none;
+  }
+
+  .nav__links {
+    position: static;
+    padding: 0;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 4rem;
+    background-color: transparent;
+    transform: none;
+  }
+
+  .nav__links a {
+    color: var(--text-dark);
+  }
+
+} 
+/* .search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2; 
+    margin-top: 20px;
+    padding: 10px;
+    margin: 0 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+} */
+
+/* .search-container input[type="date"] {
+    padding: 10px;
+    margin: 0 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.search-container select {
+    padding: 10px;
+    margin: 0 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.search-container button {
+    padding: 10px 20px;
+    background-color: #13396d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.search-container button:hover {
+    background-color: #df4f0c;
+}
+
+
+
+.search-container input {
+    padding: 10px;
+    margin: 0 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+}
+
+
+.search-container option:hover {
+    background-color: #f0f0f0;
+} */
+
+.guests-selector {
+    display: flex;
+    align-items: center;
+  }
+  
+  .guests-selector input[type="number"] {
+    width: 100px;     
+    text-align: center; 
+    margin: 0 10px; 
+  }
+
+  .container {
+    display: flex;
+    justify-content: space-around; 
+    align-items: center; 
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    z-index: 2;
+}
+.container p {
+    position: absolute; /* Menetapkan posisi absolut untuk elemen p */
+    top: calc(-50% - 80px); /* Menyusun p di atas h1, h2, h3, dan h4 */
+    left: 50%;
+    transform: translateX(-50%);
+    color: #13396d;
+    font-family: Arial, sans-serif;
+    font-size: 30px;
+    font-weight: bold; /* Membuat teks menjadi bold */
+    white-space: nowrap; /* Membuat teks hanya satu baris */
+}
+
+
+.container h1, .container h2, .container h3, .container h4 {
+    cursor: pointer; /* Tambahkan pointer ketika kursor diarahkan ke elemen */
+    margin: 5px; /* Hilangkan margin bawaan dari elemen-elemen */
+    padding: 10px 20px; /* Tambahkan padding */
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    color: white;
+    display: flex; /* Mengubah elemen menjadi flex */
+    align-items: center; /* Memusatkan isi secara vertikal */
+}
+
+.container h1:hover, .container h2:hover, .container h3:hover, .container h4:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Ubah warna latar belakang saat dihover */
+
+}
+.content {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+.content h1 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  font-weight: normal;
+  margin-left: 10px;
+  /* text-align: center; */
+  color: #333; /* Warna teks */
+}
+
+.hotel-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Mengubah lebar minimum dan maksimum kotak */
+  gap: 155px;
+}
+
+.apart {
+  background-color: #f9f9f9;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top  : 100px; /* Menambahkan margin kanan untuk menggeser kotak ke kiri */
+}
+
+
+.apart img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.apart h2 {
+  font-size: 16px; /* Mengurangi ukuran font judul */
+  margin-top: 10px;
+  margin-bottom: 5px;
+  color: #333; /* Warna teks */
+}
+
+.apart p {
+  font-size: 14px; /* Mengurangi ukuran font deskripsi */
+  color: #666; /* Warna teks */
+  margin-bottom: 5px; /* Mengurangi margin bawah untuk menjaga jarak */
+}
+
+.apart button {
+  padding: 5px 10px; /* Mengurangi padding tombol */
+  font-size: 14px; /* Mengurangi ukuran font tombol */
+  background-color: #007bff; /* Warna latar belakang tombol */
+  color: #fff; /* Warna teks tombol */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Animasi perubahan warna latar belakang */
+}
+
+.apart button:hover {
+  background-color: #0056b3; /* Warna latar belakang tombol saat dihover */
+}
+
+.footer-container {
+  display: flex;
+  background-color: #36495b;
+  color: white;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 200px;
+  margin: 10px;
+}
+
+.footer-logo {
+  max-width: 150px;
+  margin-bottom: 20px;
+}
+
+.certifications img {
+  max-width: 50px;
+  margin-right: 10px;
+}
+
+.partner-button {
+  background-color: #34495e;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 20px 0;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.partner-button:hover {
+  background-color: #3b5998;
+}
+
+.payment-partners img {
+  max-width: 50px;
+  margin: 5px;
+}
+
+.footer-section h3 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.footer-section ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+.footer-section ul li a:hover {
+  text-decoration: underline;
+}
+
+.social-media img {
+  max-width: 20px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+.app-download img {
+  max-width: 100px;
+  margin: 10px 0;
+}
+
+.hotel-card {
+  background-color: #fff;
+  margin: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 300px;
+  font-size: 14px;
+}
+
+.hotel-image-container {
+  position: relative;
+}
+
+.hotel-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.hotel-discount {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: #e74c3c;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.hotel-location {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #3498db;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.hotel-info {
+  padding: 20px;
+}
+
+.hotel-name {
+  font-size: 1.2em;
+  margin: 0;
+  color: #333;
+}
+
+.hotel-rating {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.rating-score {
+  color: #3498db;
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.rating-count {
+  color: #777;
+  margin-right: 5px;
+}
+
+.rating-stars {
+  color: #f1c40f;
+}
+
+.hotel-old-price {
+  text-decoration: line-through;
+  color: #777;
+  margin: 10px 0 0;
+}
+
+.hotel-new-price {
+  font-size: 1.2em;
+  color: #e74c3c;
+  margin: 5px 0 0;
+  font-weight: bold;
+}
+
+.filter-container {
+  width: 100%;
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.filter-button {
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  margin: 0 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.filter-button.active,
+.filter-button:hover {
+  background-color: #2980b9;
+}
+
+.search-container {
+width: 100%;
+max-width: 800px;
+background-color: white;
+border-radius: 10px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+overflow: hidden;
+position: absolute;
+top: 110%;
+left: 50%;
+transform: translate(-50%, -50%);
+}
+
+.tabs {
+display: flex;
+justify-content: space-between;
+background-color: #fff;
+color: #3498db;
+padding: 10px 20px;
+}
+
+.tab {
+cursor: pointer;
+}
+
+.tab.active {
+font-weight: bold;
+}
+
+.search-form {
+padding: 20px;
+}
+
+.form-group {
+margin-bottom: 20px;
+}
+
+.form-group label {
+display: block;
+margin-bottom: 5px;
+color: #777;
+}
+
+.form-group input[type="text"],
+.form-group input[type="date"],
+.form-group select {
+width: 100%;
+padding: 10px;
+border: 1px solid #ddd;
+border-radius: 5px;
+margin-top: 5px;
+}
+
+.form-control {
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+.form-control label {
+flex: 1;
+margin-right: 10px;
+color: #777;
+}
+
+.form-control input[type="date"],
+.form-control select {
+flex: 2;
+}
+
+.payment-option {
+display: inline-block;
+color: #3498db;
+margin-top: 10px;
+text-decoration: none;
+}
+
+.search-button {
+background-color: #e67e22;
+color: white;
+border: none;
+border-radius: 5px;
+padding: 10px 20px;
+cursor: pointer;
+font-size: 16px;
+margin-top: 10px;
+float: right;
+}
+
+.search-button:hover {
+background-color: #d35400;
+}

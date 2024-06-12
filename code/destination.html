@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pencarian Aktivitas</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="destination-styles.css">
+</head>
+<body>
+    <nav>
+        <div class="nav__header">
+          <div class="nav__logo">
+            <img src="assets/logo1.png" width="10%" height="10%" class="logo"> 
+          </div>
+          <div class="nav__menu__btn" id="menu-btn">
+            <i class="ri-menu-line"></i>
+          </div>
+        </div>
+        <ul class="nav__links" id="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#service">Service</a></li>
+          <li><a href="#destination">Tujuan</a></li>
+          <li><a href="index.html">Login</a></li>
+          <li><a href="#client">Sign Up</a></li>
+        </ul>
+      </nav>
+    <section class="search-section">
+        <div class="overlay"></div>
+        <div class="container">
+            <h1>Ciptakan momen tak terlupakan dari sini</h1>
+            <div class="search-box">
+                <input type="text" placeholder="Cari aktivitas atau destinasi">
+                <button type="submit">
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                </button>
+            </div>
+            <div class="location-filter">
+                <button class="location-button">Things To Do di</button>
+                <button class="location-dropdown">Semua lokasi <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+            </div>
+        </div>
+    </section>
+
+    <section class="activity-section">
+        <div class="container">
+            <h2>Saatnya Bertualang!</h2>
+            <p>Cek rekomendasi aktivitas keren di berbagai negara, kuy!</p>
+            <div class="country-filters">
+                <button class="country-button active">Singapore</button>
+                <button class="country-button">Malaysia</button>
+                <button class="country-button">Jepang</button>
+                <button class="country-button">Thailand</button>
+                <button class="country-button">Amerika Serikat</button>
+                <button class="country-button">Korea Selatan</button>
+            </div>
+            <div class="activity-cards">
+                <div class="activity-card">
+                    <img src="assets/exampl.webp" alt="Universal Studios Singapore" class="activity-image">
+                    <div class="activity-info">
+                        <h3>Universal Studios Singapore</h3>
+                        <p>Singapura</p>
+                        <p>4,4/5 (2.522 Review)</p>
+                        <p class="activity-price">IDR 60.195</p>
+                    </div>
+                </div>
+                <div class="activity-card">
+                    <img src="assets/exampl.webp" alt="Formula 1 Singapore Airlines" class="activity-image">
+                    <div class="activity-info">
+                        <h3>FORMULA 1 SINGAPORE AIRLINES SINGAPORE GRAND PRIX</h3>
+                        <p>Downtown Core, Singapura</p>
+                        <p>Menunggu Review</p>
+                        <p class="activity-price">IDR 1.661.274</p>
+                    </div>
+                </div>
+                <div class="activity-card">
+                    <img src="assets/exampl.webp" alt="Singapore Cable Car Sky Pass" class="activity-image">
+                    <div class="activity-info">
+                        <h3>Singapore Cable Car Sky Pass</h3>
+                        <p>Bukit Merah, Singapura</p>
+                        <p>4,7/5 (39 Review)</p>
+                        <p class="activity-price">IDR 196.790</p>
+                    </div>
+                </div>
+                <div class="activity-card">
+                    <img src="assets/exampl.webp" alt="Singapore Zoo" class="activity-image">
+                    <div class="activity-info">
+                        <h3>Singapore Zoo</h3>
+                        <p>Central Water Catchment, Singapura</p>
+                        <p>4,6/5 (37 Review)</p>
+                        <p class="activity-price">IDR 572.338</p>
+                    </div>
+                </div>
+            </div>
+            <button class="view-all-button">Lihat Semua</button>
+        </div>
+    </section>
+
+    <footer class="footer" >
+        <div class="section__container footer__container">
+            <div class="footer__col">
+            <div class="footer__logo">
+                <img src="assets/logo1.png" width="10%" height="10%" class="logo">
+            </div>
+            <p>
+                Platform kami adalah paspor Anda untuk petualangan yang lancar,
+                menawarkan seleksi tujuan yang disusun dengan baik dan pengalaman
+                pemesanan yang ramah pengguna.
+            </p>
+            </div>
+            <div class="footer__col">
+            <h4>Perusahaan</h4>
+            <ul class="footer__links">
+                <li><a href="#">Tentang</a></li>
+                <li><a href="#">Karir</a></li>
+                <li><a href="#">Seluler</a></li>
+            </ul>
+            </div>
+            <div class="footer__col">
+            <h4>Kontak</h4>
+            <ul class="footer__links">
+                <li><a href="#">Bantuan/FAQ</a></li>
+                <li><a href="#">Pers</a></li>
+                <li><a href="#">Afiliasi</a></li>
+            </ul>
+            </div>
+            <div class="footer__col">
+            <ul class="footer__socials">
+                <li>
+                <a href="#"><i class="ri-facebook-fill"></i></a>
+                </li>
+                <li>
+                <a href="#"><i class="ri-instagram-line"></i></a>
+                </li>
+                <li>
+                <a href="#"><i class="ri-twitter-fill"></i></a>
+                </li>
+            </ul>
+            <h5>Temukan aplikasi kami</h5>
+            <div class="footer__discover">
+                <a href="#"><img src="assets/google-play.jpg" alt="discover" /></a>
+                <a href="#"><img src="assets/app-store.jpg" alt="discover" /></a>
+            </div>
+            </div>
+        </div>
+        <div class="footer__bar">
+            Hak Cipta © 2024 Menguasai Desain Web. Seluruh hak dilindungi.
+        </div>
+      </footer>
+</body>
+</html>

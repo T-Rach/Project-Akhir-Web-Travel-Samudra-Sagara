@@ -1,0 +1,273 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+:root {
+  --primary-color: #e06951;
+  --text-dark: #111827;
+  --text-light: #6b7280;
+  --white: #ffffff;
+  --max-width: 1200px;
+}
+
+
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+a {
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+html,
+body {
+  scroll-behavior: smooth;
+}
+
+nav {
+  position: fixed;
+  isolation: isolate;
+  width: 100%;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  z-index: 9;
+}
+
+.nav__header {
+  padding: 1rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--text-dark);
+}
+
+.nav__logo .logo {
+  color: var(--white);
+}
+
+.nav__menu__btn {
+  font-size: 1.5rem;
+  color: var(--white);
+  cursor: pointer;
+}
+
+.nav__links {
+  position: absolute;
+  top: 65px;
+  left: 0;
+  width: 100%;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem;
+  background-color: var(--text-dark);
+  transition: 0.5s;
+  z-index: -1;
+  transform: translateY(-100%);
+}
+
+.nav__links.open {
+  transform: translateY(0);
+}
+
+.nav__links a {
+  font-weight: 500;
+  white-space: nowrap;
+  color: var(--white);
+}
+
+.nav__links a:hover {
+  color: var(--primary-color);
+}
+
+
+@media (width > 768px) {
+  nav {
+    position: static;
+    padding-block: 2rem 0;
+    padding-inline: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  .nav__header {
+    padding: 0;
+    background-color: transparent;
+  }
+
+  .nav__logo .logo {
+    color: var(--text-dark);
+    width: 25%; 
+    height: auto; 
+  }
+
+  .nav__menu__btn {
+    display: none;
+  }
+
+  .nav__links {
+    position: static;
+    padding: 0;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 4rem;
+    background-color: transparent;
+    transform: none;
+  }
+
+  .nav__links a {
+    color: var(--text-dark);
+  }
+
+} 
+
+.header {
+  height: 900px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url('assets/jogja.jpg'); /* Ganti 'nama_file_gambar.jpg' dengan path atau URL gambar Anda */
+  color: white;
+  text-align: center;
+  /* padding: 60px 20px; */
+  position: relative;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+}
+
+.navigation ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.navigation ul li {
+  margin: 0 10px;
+}
+
+.navigation ul li a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+.navigation ul li a:hover,
+.navigation ul li a.active {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.search-options {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.search-option {
+  background: #3498db;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 0 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.search-option.active,
+.search-option:hover {
+  background: #2980b9;
+}
+
+.search-form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  color: #333;
+}
+
+.form-group {
+  flex: 1;
+  min-width: 200px;
+  margin: 10px;
+}
+.form-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-top: 5px;
+  }
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.input-icon {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #f9f9f9;
+}
+
+.input-icon .icon {
+  color: #777;
+  margin-right: 10px;
+  width: 24px;
+  height: 24px;
+}
+
+.input-icon input[type="text"],
+.input-icon input[type="date"],
+.input-icon select {
+  border: none;
+  outline: none;
+  width: 100%;
+  background: none;
+  padding: 0;
+}
+
+.search-button {
+  background-color: #e67e22;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 15px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-button .icon {
+  margin-right: 10px;
+}
+
+.search-button:hover {
+  background-color: #d35400;
+}
