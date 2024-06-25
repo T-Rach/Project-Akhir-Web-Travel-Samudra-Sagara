@@ -219,7 +219,7 @@ nav {
 }
 .container p {
     position: absolute; /* Menetapkan posisi absolut untuk elemen p */
-    top: calc(-50% - 80px); /* Menyusun p di atas h1, h2, h3, dan h4 */
+    top: calc(-50% - 30px); /* Menyusun p di atas h1, h2, h3, dan h4 */
     left: 50%;
     transform: translateX(-50%);
     color: #13396d;
@@ -260,11 +260,6 @@ nav {
   color: #333; /* Warna teks */
 }
 
-.hotel-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Mengubah lebar minimum dan maksimum kotak */
-  gap: 155px;
-}
 
 .apart {
   background-color: #f9f9f9;
@@ -387,6 +382,13 @@ nav {
   margin: 10px 0;
 }
 
+.hotel-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); 
+  gap: 10px 155px;
+  justify-content: center;
+}
+
 .hotel-card {
   background-color: #fff;
   margin: 10px;
@@ -395,6 +397,7 @@ nav {
   overflow: hidden;
   width: 300px;
   font-size: 14px;
+  justify-content: center;
 }
 
 .hotel-image-container {
@@ -588,4 +591,28 @@ float: right;
 
 .search-button:hover {
 background-color: #d35400;
+}
+.navigation ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.navigation ul li {
+  margin: 0 10px;
+}
+
+.navigation ul li a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+.navigation ul li a:hover,
+.navigation ul li a.active {
+  background: rgba(255, 255, 255, 0.3);
 }
