@@ -76,12 +76,6 @@
             <div class="row my-5 px-5">
                 <div class="col-md-6">
                     <div class="header">
-                        <div>
-                            <h2><?= $row['Nama_Hotel'] ?></h2>
-                            <div class="location">
-                                <p><?= $row["Hoteladdress"] ?></a></p>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -95,7 +89,7 @@
             <div class="row mb-5 px-5">
                 <div class="main-content">
                     <div class="main-image">
-                        <img src="assets/<?= $row['gambar'] ?>" alt="Hotel Image">
+                        <img src="assets/ alt="Hotel Image">
                     </div>
                     <div class="side-images">
                         <img src="assets/hotel1.jpg" alt="Side Image 1">
@@ -187,7 +181,7 @@
                 </div>
 
                 <input type="hidden" class="form-control" value="hotel" id="tipe_pemesanan" name="tipe_pemesanan" required>
-                <input type="hidden" class="form-control" value="<?= $row['Hotel_Id'] ?>" id="tipe_pemesanan" name="hotel_id" required>
+                <input type="hidden" class="form-control" id="tipe_pemesanan" name="hotel_id" required>
     
                 <div class="form-group mb-2">
                     <label class="form-label" for="checkout">Check-out</label>
