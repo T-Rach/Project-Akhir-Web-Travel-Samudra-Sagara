@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,10 +34,10 @@
           </div>
         </div>
         <ul class="nav__links" id="nav-links">
-            <li><a href="web.html">Home</a></li>
-            <li><a href="servicehotel.html">Service</a></li>
-            <li><a href="index.html">Login</a></li>
-            <li><a href="index.html">Sign Up</a></li>
+            <li><a href="web.php">Home</a></li>
+            <li><a href="servicehotel.php">Service</a></li>
+            <li><a href="index.php">Login</a></li>
+            <li><a href="index.php">Sign Up</a></li>
         </ul>
       </nav>
       
@@ -44,9 +45,9 @@
         <p style="color: white;"> Explore from Sabang to Merauke</p>
         <nav class="navigation">
             <ul>
-                <li><a href="servicehotel.html"class="active">Hotels</a></li>
-                <li><a href="serviceflight.html" >Flights</a></li>
-                <li><a href="destination.html">Destination</a></li>
+                <li><a href="servicehotel.php"class="active">Hotels</a></li>
+                <li><a href="serviceflight.php" >Flights</a></li>
+                <li><a href="destination.php">Destination</a></li>
             </ul>
         </nav>
       </div>
@@ -56,39 +57,42 @@
             <span class="tab active">Hotel yang Terakhir Dilihat</span>
         </div>
         <div class="search-form">
-            <div class="form-group">
-                <label for="destination">Kota, tujuan, atau nama hotel</label>
-                <input type="text" id="destination" placeholder="Kota, hotel, tempat wisata">
-            </div>
-            <div class="form-group">
-                <div class="form-control">
-                    <label for="checkin">Check-in:</label>
-                    <input type="date" id="checkin">
+            <form id="searchForm" method="GET" action="">
+                <div class="form-group">
+                    <label for="destination">Kota, tujuan, atau nama hotel</label>
+                    <input type="text" id="destination" name="destination" placeholder="Kota, hotel, tempat wisata" value="<?= htmlspecialchars($searchTerm) ?>">
                 </div>
-                <div class="form-control">
-                    <label for="duration">Durasi</label>
-                    <select id="duration">
-                        <option>1 malam</option>
-                        <option>2 malam</option>
-                        <option>3 malam</option>
-                    </select>
+                <div class="form-group">
+                    <div class="form-control">
+                        <label for="checkin">Check-in:</label>
+                        <input type="date" id="checkin" name="checkin">
+                    </div>
+                    <div class="form-control">
+                        <label for="duration">Durasi</label>
+                        <select id="duration" name="duration">
+                            <option>1 malam</option>
+                            <option>2 malam</option>
+                            <option>3 malam</option>
+                        </select>
+                    </div>
+                    <div class="form-control">
+                        <label for="checkout">Check-out:</label>
+                        <input type="date" id="checkout" name="checkout">
+                    </div>
                 </div>
-                <div class="form-control">
-                    <label for="checkout">Check-out:</label>
-                    <input type="date" id="checkout">
+                <div class="form-group">
+                    <label for="guests">Tamu dan Kamar</label>
+                    <input type="text" id="guests" name="guests" placeholder="2 Dewasa, 0 Anak, 1 Kamar">
                 </div>
-            </div>
-            <div class="form-group">
-                <label for="guests">Tamu dan Kamar</label>
-                <input type="text" id="guests" placeholder="2 Dewasa, 0 Anak, 1 Kamar">
-            </div>
-            <div class="form-group">
-                <a href="#" class="payment-option">Bayar di Hotel</a>
-                <button type="submit" class="search-button">Cari Hotel</button>
-            </div>
+                <div class="form-group">
+                    <a href="#" class="payment-option">Bayar di Hotel</a>
+                    <button type="submit" class="search-button">Cari Hotel</button>
+                </div>
+            </form>
         </div>
     </div>
-    <div class="content" style="margin-top: 800px">
+    <!-- <div class="content" style="margin-top: 800px"> -->
+    <div class="content" style="margin-top: 1200px">
       <h1>Select Your Hotel</h1>
       <div class="filter-container">
           <button class="filter-button active">Surabaya</button>
@@ -96,108 +100,32 @@
           <button class="filter-button">Medan</button>
       </div>
       <div class="hotel-list">
-        <div class="hotel-card">
-          <div class="hotel-image-container">
-              <img src="assets/hotel1.jpg" alt="Hotel Image" class="hotel-image">
-              <div class="hotel-discount">Hemat 25%</div>
-              <div class="hotel-location">Gubeng</div>
-          </div>
-          <div class="hotel-info">
-            <h2 class="hotel-name"><a href="booking.html">Life Puri Hotel Surabaya</a></h2>
+        
+            <a href="booking.php?id=<?= $item['Hotel_Id'] ?>" class="hotel-card-link">
+    <div class="hotel-card">
+        <div class="hotel-image-container">
+            <img src="assets/<?= $item['gambar'] ?>" alt="Hotel Image" class="hotel-image">
+            <div class="hotel-discount">Hemat <?= $item['diskon'] ?>%</div>
+            <div class="hotel-location">Gubeng</div>
+        </div>
+        <div class="hotel-info">
+            <h2 class="hotel-name"><?= $item['Nama_Hotel'] ?></h2>
             <div class="hotel-rating">
                 <span class="rating-score">8.2/10</span>
                 <span class="rating-count">(590)</span>
                 <span class="rating-stars">⭐⭐⭐</span>
             </div>
-              <p class="hotel-old-price">Rp 200.667</p>
-              <p class="hotel-new-price">Rp 150.500</p>
-          </div>
+            <p class="hotel-old-price">Rp. <?= number_format($item['Hotel_Rent'], 0, ',', '.'); ?></p>
+            <?php 
+                $jumlahDiskon = ($item['Hotel_Rent'] * $item['diskon']) / 100;
+                $hargaAkhir = $item['Hotel_Rent'] - $jumlahDiskon;
+            ?>
+            <p class="hotel-new-price">Rp. <?= number_format($hargaAkhir, 0, ',', '.'); ?></p>
         </div>
-        <div class="hotel-card">
-            <div class="hotel-image-container">
-                <img src="assets/hotel1.jpg" alt="Hotel Image" class="hotel-image">
-                <div class="hotel-discount">Hemat 25%</div>
-                <div class="hotel-location">Gubeng</div>
-            </div>
-            <div class="hotel-info">
-                <h2 class="hotel-name">Life Puri Hotel Surabaya</h2>
-                <div class="hotel-rating">
-                    <span class="rating-score">8.2/10</span>
-                    <span class="rating-count">(590)</span>
-                    <span class="rating-stars">⭐⭐⭐</span>
-                </div>
-                <p class="hotel-old-price">Rp 200.667</p>
-                <p class="hotel-new-price">Rp 150.500</p>
-            </div>
-        </div>
-        <div class="hotel-card">
-            <div class="hotel-image-container">
-                <img src="assets/hotel1.jpg" alt="Hotel Image" class="hotel-image">
-                <div class="hotel-discount">Hemat 25%</div>
-                <div class="hotel-location">Gubeng</div>
-            </div>
-            <div class="hotel-info">
-                <h2 class="hotel-name">Life Puri Hotel Surabaya</h2>
-                <div class="hotel-rating">
-                    <span class="rating-score">8.2/10</span>
-                    <span class="rating-count">(590)</span>
-                    <span class="rating-stars">⭐⭐⭐</span>
-                </div>
-                <p class="hotel-old-price">Rp 200.667</p>
-                <p class="hotel-new-price">Rp 150.500</p>
-            </div>
-        </div>
-        <div class="hotel-card">
-            <div class="hotel-image-container">
-                <img src="assets/hotel1.jpg" alt="Hotel Image" class="hotel-image">
-                <div class="hotel-discount">Hemat 25%</div>
-                <div class="hotel-location">Gubeng</div>
-            </div>
-            <div class="hotel-info">
-                <h2 class="hotel-name">Life Puri Hotel Surabaya</h2>
-                <div class="hotel-rating">
-                    <span class="rating-score">8.2/10</span>
-                    <span class="rating-count">(590)</span>
-                    <span class="rating-stars">⭐⭐⭐</span>
-                </div>
-                <p class="hotel-old-price">Rp 200.667</p>
-                <p class="hotel-new-price">Rp 150.500</p>
-            </div>
-          </div>
-          <div class="hotel-card">
-              <div class="hotel-image-container">
-                  <img src="assets/hotel1.jpg" alt="Hotel Image" class="hotel-image">
-                  <div class="hotel-discount">Hemat 25%</div>
-                  <div class="hotel-location">Gubeng</div>
-              </div>
-              <div class="hotel-info">
-                  <h2 class="hotel-name">Life Puri Hotel Surabaya</h2>
-                  <div class="hotel-rating">
-                      <span class="rating-score">8.2/10</span>
-                      <span class="rating-count">(590)</span>
-                      <span class="rating-stars">⭐⭐⭐</span>
-                  </div>
-                  <p class="hotel-old-price">Rp 200.667</p>
-                  <p class="hotel-new-price">Rp 150.500</p>
-              </div>
-          </div>
-          <div class="hotel-card">
-              <div class="hotel-image-container">
-                  <img src="assets/hotel1.jpg" alt="Hotel Image" class="hotel-image">
-                  <div class="hotel-discount">Hemat 25%</div>
-                  <div class="hotel-location">Gubeng</div>
-              </div>
-              <div class="hotel-info">
-                  <h2 class="hotel-name">Life Puri Hotel Surabaya</h2>
-                  <div class="hotel-rating">
-                      <span class="rating-score">8.2/10</span>
-                      <span class="rating-count">(590)</span>
-                      <span class="rating-stars">⭐⭐⭐</span>
-                  </div>
-                  <p class="hotel-old-price">Rp 200.667</p>
-                  <p class="hotel-new-price">Rp 150.500</p>
-              </div>
-          </div>
+    </div>
+</a>
+
+  
       </div>
     </div>
 
