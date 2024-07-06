@@ -14,7 +14,7 @@
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="on.html">Samudra Sagara</a>
+            <a class="navbar-brand ps-3" href="on.php">Samudra Sagara</a>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
@@ -32,7 +32,7 @@
                         <li><a class="dropdown-item" href="#!">Settings</a></li>
                         <li><a class="dropdown-item" href="#!">Activity Log</a></li>
                         <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="loginadmin.html">Logout</a></li>
+                        <li><a class="dropdown-item" href="loginadmin.php">Logout</a></li>
                     </ul>
                 </li>
             </ul>
@@ -47,31 +47,31 @@
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Dashboard
                         </a>
-                        <a class="nav-link" href="admin.html">
+                        <a class="nav-link" href="admin.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-plane"></i></div>
                             Jadwal Penerbangan
                         </a>
-                        <a class="nav-link" href="cekhotel.html">
+                        <a class="nav-link" href="cekhotel.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-book"></i></div>
                             Cek Kamar
                         </a>
-                        <a class="nav-link" href="cekhotel.html">
+                        <a class="nav-link" href="cekhotel.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
                             Status Pelanggan
                         </a>
-                        <a class="nav-link" href="admin.html">
+                        <a class="nav-link" href="admin.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-book"></i></div>
                             Cek Pembayaran Flight
                         </a>
-                        <a class="nav-link" href="pembayaranhotel.html">
+                        <a class="nav-link" href="pembayaranhotel.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-book"></i></div>
                             Cek Pembayaran Hotel
                         </a>
-                        <a class="nav-link" href="cekdestinasi.html">
+                        <a class="nav-link" href="cekdestinasi.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-book"></i></div>
                             Cek Pembayaran Destinasi
                         </a>
-                        <a class="nav-link" href="logout.html">
+                        <a class="nav-link" href="logout.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-right-from-bracket"></i></div>
                             Logout
                         </a>
@@ -84,9 +84,9 @@
                                 </a>
                                 <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                     <nav class="sb-sidenav-menu-nested nav">
-                                        <a class="nav-link" href="login.html">Login</a>
-                                        <a class="nav-link" href="register.html">Register</a>
-                                        <a class="nav-link" href="password.html">Forgot Password</a>
+                                        <a class="nav-link" href="login.php">Login</a>
+                                        <a class="nav-link" href="register.php">Register</a>
+                                        <a class="nav-link" href="password.php">Forgot Password</a>
                                     </nav>
                                 </div>
                                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
