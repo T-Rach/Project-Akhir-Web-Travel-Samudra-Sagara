@@ -1,3 +1,38 @@
+<?php 
+    $servername = "localhost";
+    $username = "root"; 
+    $password = "Iph3ng08";     
+    $dbname = "samudra_sagara";
+
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    $searchTerm = "";
+
+    if (isset($_GET['id'])) {
+        $searchTerm = $_GET['id'];
+
+        $sql = "SELECT * FROM destinasi WHERE Destinasi_Id = $searchTerm";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+        } else {
+            echo "0 results";
+        }
+    }else {
+        header("Location: servicehotel.php");
+        exit();
+    }
+
+    $jumlah = 
+
+    $conn->close();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -76,7 +111,7 @@
             <div>
                 <h2></h2>
                 <div class="location">
-                    <p>📍</a></p>
+                    <p>📍<?= $row['address'] ?></a></p>
                     <p>🕒Open | Tue, 10:00–18:00</a></p>
                 </div>
             </div>
@@ -86,7 +121,7 @@
 
         <div class="main-content">
             <div class="main-image">
-                <img src="assets alt="Hotel Image">
+                <img src="assets/ <?= $row['gambar'] ?>" alt="Hotel Image">
             </div>
             <div class="side-images">
                 <img src="assets/ancol2.jpeg" alt="Side Image 1">
@@ -102,7 +137,7 @@
             <div class="score-map-price">
                 <div class="score">
                     <div class="score-circle">
-                        <span class="score-value"></span>
+                        <span class="score-value"><?= mt_rand(60, 90) / 10; ?></span>
                     </div>
                     <div class="score-text">
                         <span class="score-label">Excellent</span>
@@ -114,7 +149,7 @@
                     <p>Pademangan, Jakarta Utara</p>
                 </div>
                 <div class="price">
-                    <span class="current-price">Rp</span>
+                    <span class="current-price">Rp<?= number_format((float)$row['harga'], 0, ',', '.') ?> </span>
                     <button class="find-tickets" onclick="openPopup()">Pesan Tiket</button>
                 </div>
             </div>
@@ -172,8 +207,8 @@
 
                 <div class="form-group mb-2">
                     <label class="form-label" for="total">Total</label>
-                    <input class="form-control" type="text" disabled id="total" required>
-                    <input class="form-control" type="hidden" name="total" id="totalDoc" required>
+                    <input class="form-control" value="<?= round($row['harga']) ?>" type="text" disabled id="total" required>
+                    <input class="form-control" value="<?= round($row['harga']) ?>" type="hidden" name="total" id="totalDoc" required>
                 </div>
     
                 <div class="form-group mb-2">
