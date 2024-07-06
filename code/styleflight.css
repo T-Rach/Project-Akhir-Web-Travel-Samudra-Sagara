@@ -146,7 +146,6 @@ nav {
   padding: 20px;
   background: rgba(0, 0, 0, 0.5);
   border-radius: 10px;
-  
 }
 
 .navigation ul {
@@ -167,7 +166,6 @@ nav {
   padding: 10px 20px;
   border-radius: 5px;
   transition: background 0.3s;
-  text-align: center;
 }
 
 .navigation ul li a:hover,
@@ -272,85 +270,4 @@ nav {
 
 .search-button:hover {
   background-color: #d35400;
-}
-
-
-.activities-container {
-    display: flex;
-    justify-content: space-between; /* Membuat konten berdampingan */
-    gap: 20px; /* Memberi jarak antar bagian */
-    background-color: #f9f9f9;
-}
-
-.activity-section, .activity-section2 {
-    flex: 1; /* Masing-masing bagian mengambil sebagian fleksibel dari ruang yang tersedia */
-    padding: 40px 20px;
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.flights {        
-  position: absolute;
-  top: 85%; /* Sesuaikan jarak dari bawah sesuai kebutuhan */
-  left: 50%; /* Sesuaikan posisi horizontal */
-  transform: translateX(-50%); /* Pusatkan horizontal */
-  width: 80%;
-  max-width: 800px;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.logo-small {
-  width: 40px; 
-  height: auto; /* Biarkan tinggi otomatis */
-  margin-right: 10px; /* Berikan margin kiri untuk menjaga jarak dari teks */
-}
-
-
-.flight-card {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #ffff;
-  padding: 15px;
-  border-radius: 10px;
-  margin-bottom: 20px; /* Menambahkan jarak 20px antara box penerbangan */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 100%;
-}
-
-
-.flight-info {
-  flex: 3;
-}
-
-.flight-action {
-  flex: 1;
-  text-align: center;
-}
-
-button {
-  padding: 10px 20px;
-  background-color: #0c274e;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-button:hover {
-  background-color: #df4f0c;
-}
-
-h2 {
-  text-align: center;
-  margin-bottom: 30px;
-  color: #0c274e;
-}
-
-.flight-card pi {
-  color: #df4f0c;
 }
