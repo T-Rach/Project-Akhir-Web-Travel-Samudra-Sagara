@@ -1,3 +1,51 @@
+<?php
+    // Konfigurasi database
+    $servername = "localhost";
+    $username = "root"; // Sesuaikan dengan username MySQL Anda
+    $password = "Iph3ng08";     // Sesuaikan dengan password MySQL Anda
+    $dbname = "samudra_sagara";
+
+    // Buat koneksi
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    // Periksa koneksi
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    $from = "";
+    $to = "";
+    $departure = "";
+    $return = "";
+    $passengers = "";
+    $class = "";
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $from = $_POST['from'];
+        $to = $_POST['to'];
+        $departure = $_POST['departure'];
+        $return = $_POST['return'];
+        $passengers = $_POST['passengers'];
+        $class = $_POST['class'];
+    }
+
+    $sql = "SELECT * FROM pesawat WHERE Keberangkatan LIKE '%$from%' AND tujuan LIKE '%$to%'";
+    if($class) {
+        $sql = "SELECT * FROM pesawat WHERE Keberangkatan LIKE '%$from%' AND tujuan LIKE '%$to%' AND class = '$class'";
+    }
+    $result = $conn->query($sql);
+    $data = [];
+    $item;
+
+    if ($result->num_rows > 0) {
+        // Output data dari setiap baris
+        while($row = $result->fetch_assoc()) {
+            $data[] = $row;
+        }
+    } else {
+        echo "0 results";
+    }
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -76,10 +124,10 @@
         </div>
       </div>
       <ul class="nav__links" id="nav-links">
-        <li><a href="web.html">Home</a></li>
-        <li><a href="servicehotel.html">Service</a></li>
-        <li><a href="index.html">Login</a></li>
-        <li><a href="index.html">Sign Up</a></li>
+        <li><a href="web.php">Home</a></li>
+        <li><a href="servicehotel.php">Service</a></li>
+        <li><a href="index.php">Login</a></li>
+        <li><a href="index.php">Sign Up</a></li>
       </ul>
     </nav>
     <div class="container" style="margin-top: 15%">
@@ -151,19 +199,22 @@
 <div class="activities-container">
     <section class="activity-section">
         <div class="row">
-        
+          <?php foreach($data as $item) {?>
             <div class="col-md-6">
                 <div class="flight-card">
                     <div class="flight-info">
-                        <h3><img src="assets/garuda.jpeg
-                        
+                       <h3><img src="assets/garuda.jpeg" alt="Logo Maskapai" class="logo-small"><?= $item['Keberangkatan'] ?> - <?= $item['tujuan'] ?></h3>
+                        <p>Maskapai: <?= $item['Pesawat'] ?></p>
+                        <p>Waktu: <?= $item['Waktu_Keberangkatan'] ?></p>
+                        <p>Rp <?= number_format((float)$item['price'], 0, ',', '.') ?>/pax</p>
+                        <p>Class: <?= $item['class'] ?></p>
                     </div>
                     <div class="flight-action">
                         <button onclick="openPopup(<?= $item['Flight_Id'] ?>, <?= $item['price'] ?>)">Book Now</button>
                     </div>
                 </div>        
             </div>
-          
+           <?php } ?>
         </div>
         <!-- Tambahkan flight-card lainnya sesuai kebutuhan -->
     </section>
