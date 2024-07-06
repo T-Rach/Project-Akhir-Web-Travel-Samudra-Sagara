@@ -26,10 +26,10 @@
         </div>
       </div>
       <ul class="nav__links" id="nav-links">
-        <li><a href="web.html">Home</a></li>
-        <li><a href="servicehotel.html">Service</a></li>
-        <li><a href="index.html">Login</a></li>
-        <li><a href="index.html">Sign Up</a></li>
+        <li><a href="web.php">Home</a></li>
+        <li><a href="servicehotel.php">Service</a></li>
+        <li><a href="index.php">Login</a></li>
+        <li><a href="index.php">Sign Up</a></li>
       </ul>
     </nav>
 
