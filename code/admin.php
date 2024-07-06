@@ -59,7 +59,7 @@
                     <li><a class="dropdown-item" href="#!">Settings</a></li>
                     <li><a class="dropdown-item" href="#!">Activity Log</a></li>
                     <li><hr class="dropdown-divider" /></li>
-                    <li><a class="dropdown-item" href="#!">Logout</a></li>
+                    <li><a class="dropdown-item" href="#">Logout</a></li>
                 </ul>
             </li>
         </ul>
@@ -70,35 +70,35 @@
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Menu</div>
-                        <a class="nav-link" href="on.html">
+                        <a class="nav-link" href="on.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Dashboard
                         </a>
-                        <a class="nav-link" href="admin.html">
+                        <a class="nav-link" href="admin.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-plane"></i></div>
                             Jadwal Penerbangan
                         </a>
-                        <a class="nav-link" href="cekhotel.html">
+                        <a class="nav-link" href="cekhotel.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-book"></i></div>
                             Cek Kamar
                         </a>
-                        <a class="nav-link" href="cekhotel.html">
+                        <a class="nav-link" href="cekhotel.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
                             Status Pelanggan
                         </a>
-                        <a class="nav-link" href="admin.html">
+                        <a class="nav-link" href="admin.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-book"></i></div>
                             Cek Pembayaran Flight
                         </a>
-                        <a class="nav-link" href="pembayaranhotel.html">
+                        <a class="nav-link" href="pembayaranhotel.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-book"></i></div>
                             Cek Pembayaran Hotel
                         </a>
-                        <a class="nav-link" href="cekdestinasi.html">
+                        <a class="nav-link" href="cekdestinasi.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-book"></i></div>
                             Cek Pembayaran Destinasi
                         </a>
-                        <a class="nav-link" href="logout.html">
+                        <a class="nav-link" href="logout.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-right-from-bracket"></i></div>
                             Logout
                         </a>
@@ -151,6 +151,60 @@
                         <th>Aksi</th>
                     </tr>
                 </thead>
+                 <tbody id="payments-body">
+                    <?php
+                    $index = 1;
+                    ?>
+                    <?php foreach($data as $item): ?>
+                    <tr>
+                        <td><?= $index ?></td>
+                        <td><?= $item['tipe_pemesanan'] ?></td>
+                        <td><?= $item['nama_customer'] ?></td>
+                        <td><?= $item['booking_description'] ?></td>
+                        <td>Rp <?= number_format((float)$item['total'], 0, ',', '.') ?></td>
+                        <td>
+                            <?php
+                                if($item['preferensi_pembayaran'] == 'pay_now') {
+                                    echo "Bayar Sekarang";
+                                }else {
+                                    echo "Bayar Di Hotel";
+                                }
+                            ?>
+
+                            <!-- if(<?= $item['preferensi_pembayaran'] ?>) -->
+                        </td>
+                        <td><?= $item['status'] ?></td>
+                        <td>
+                            <?php if($item['status'] == 'On Proccess') { ?>
+                            <div class="mb-2">
+                                <form action="update_status.php" method="POST">
+                                    <input type="hidden" name="id_pemesanan" value="<?= $item['id_pemesanan'] ?>">
+                                    <input type="hidden" name="update_flight" value="1">
+                                    <button type="submit" name="accept" class="btn btn-success">Accept</button>
+                                </form>
+                            </div>
+                            <div class="">
+                                <form action="update_status.php" method="POST">
+                                    <input type="hidden" name="id_pemesanan" value="<?= $item['id_pemesanan'] ?>">
+                                    <input type="hidden" name="update_flight" value="1">
+                                    <button type="submit" name="reject" class="btn btn-danger">Reject</button>
+                                </form>
+                            </div>
+                            <?php } ?>
+
+                            <?php if($item['status'] == 'Done') { ?>
+                                <button type="submit" name="accept" disabled class="btn btn-success">Accepted</button>
+                            <?php } ?>
+
+                            <?php if($item['status'] == 'Rejected') { ?>
+                                <button type="submit" name="accept" disabled class="btn btn-danger">Rejected</button>
+                            <?php } ?>
+
+                        </td>
+                    </tr>
+                    <?php $index++ ?>
+                    <?php endforeach ?>
+                </tbody>
             </table>
         </div>
     </div>
