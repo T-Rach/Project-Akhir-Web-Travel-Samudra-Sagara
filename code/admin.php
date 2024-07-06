@@ -1,3 +1,31 @@
+<?php
+    session_start();
+    if(!isset($_SESSION['username'])) {
+        header("Location: loginadmin.php");
+    }    $servername = "localhost";
+    $username = "root"; 
+    $password = "Iph3ng08";     
+    $dbname = "samudra_sagara";
+
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    $sql = "SELECT * FROM pemesanan WHERE tipe_pemesanan = 'Flight'";
+    $result = $conn->query($sql);
+    $data = [];
+
+    if ($result->num_rows > 0) {
+        while($row = $result->fetch_assoc()) {
+            $data[] = $row;
+        }
+    } else {
+        echo "0 results";
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
