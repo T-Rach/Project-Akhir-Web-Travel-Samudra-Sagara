@@ -1,3 +1,36 @@
+<?php
+    $servername = "localhost";
+    $username = "root";
+    $password = "Iph3ng08";    
+    $dbname = "samudra_sagara";
+
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    $destinasi = "";
+
+    if (isset($_GET['destinasi'])) {
+        $destinasi = $_GET['destinasi'];
+    }
+
+    $sql = "SELECT * FROM destinasi WHERE Nama_Destinasi LIKE '%$destinasi%'";
+
+    $result = $conn->query($sql);
+    $data = [];
+
+    if ($result->num_rows > 0) {
+        while($row = $result->fetch_assoc()) {
+            $data[] = $row;
+        }
+    } else {
+        echo "0 results";
+    }
+    $conn->close();
+?>
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -65,7 +98,23 @@
                 <button class="country-button">Parepare</button>
                 <button class="country-button">Aceh</button>
             </div>
+            <div class="activity-cards">
+                <?php foreach($data as $item) {?>
+                    <div class="activity-card">
+                    <a href="destbook.php?id=<?= $item['Destinasi_Id'] ?>" style="text-decoration: none; color: black">
+                    <img src="assets/<?= $item['gambar'] ?>" alt="Universal Studios Singapore" class="activity-image">
+                    <div class="activity-info">
+                        <h3><?= $item['Nama_Destinasi'] ?></h3>
+                        <p><?= $item['address'] ?></p>
+                        <p><?= mt_rand(30, 50) / 10; ?>/5 (<?= rand(400, 3000) ?> Review)</p>
+                        <p class="activity-price">IDR <?= number_format((float)$item['harga'], '0', ',', '.') ?></p>
+                    </div>
+                </a>
+                </div>
+                <?php } ?>
+            </div>
             <button class="view-all-button">Lihat Semua</button>
+            
         </div>
     </section>
     <footer class="footer">
