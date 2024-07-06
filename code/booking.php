@@ -1,3 +1,37 @@
+<?php
+    session_start();
+    if(!isset($_SESSION['username'])) {
+        header("Location: loginadmin.php");
+    }
+    // Konfigurasi database
+    $servername = "localhost";
+    $username = "root"; // Sesuaikan dengan username MySQL Anda
+    $password = "Iph3ng08";     // Sesuaikan dengan password MySQL Anda
+    $dbname = "samudra_sagara";
+
+    // Buat koneksi
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    // Periksa koneksi
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    // Query untuk mengambil data dari tabel users
+    $sql = "SELECT * FROM pemesanan WHERE tipe_pemesanan = 'Flight'";
+    $result = $conn->query($sql);
+    $data = [];
+
+    if ($result->num_rows > 0) {
+        // Output data dari setiap baris
+        while($row = $result->fetch_assoc()) {
+            $data[] = $row;
+        }
+    } else {
+        echo "0 results";
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -181,7 +215,7 @@
                 </div>
 
                 <input type="hidden" class="form-control" value="hotel" id="tipe_pemesanan" name="tipe_pemesanan" required>
-                <input type="hidden" class="form-control" id="tipe_pemesanan" name="hotel_id" required>
+                <input type="hidden" class="form-control" value="<?= $row['Hotel_Id'] ?>" id="tipe_pemesanan" name="hotel_id" required>
     
                 <div class="form-group mb-2">
                     <label class="form-label" for="checkout">Check-out</label>
@@ -200,8 +234,8 @@
 
                 <div class="form-group mb-2">
                     <label class="form-label" for="total">Total</label>
-                    <input class="form-control"  type="text" disabled id="total" required>
-                    <input class="form-control" type="hidden" name="total" id="totalDoc" required>
+                    <input class="form-control" value="<?= round($row['Hotel_Rent']) ?>"  type="text" disabled id="total" required>
+                    <input class="form-control" value="<?= round($row['Hotel_Rent']) ?>" type="hidden" name="total" id="totalDoc" required>
                 </div>
     
                 <div class="form-group mb-2">
