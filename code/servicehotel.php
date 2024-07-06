@@ -1,3 +1,43 @@
+<?php
+    // Konfigurasi database
+    $servername = "localhost";
+    $username = "root"; 
+    $password = "Iph3ng08";    
+    $dbname = "samudra_sagara";
+
+    // Disini membuat koneksi
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    // Periksa koneksi
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    // Inisialisasi variabel pencarian
+    $searchTerm = "";
+
+    // Cek apakah ada data pencarian yang dikirim
+    if (isset($_GET['destination'])) {
+        $searchTerm = $_GET['destination'];
+    }
+
+    // Query untuk mengambil data dari tabel users
+    $sql = "SELECT * FROM hotel WHERE Nama_Hotel LIKE '%$searchTerm%'";
+    $result = $conn->query($sql);
+    $data = [];
+
+    if ($result->num_rows > 0) {
+        // Output data dari setiap baris
+        while($row = $result->fetch_assoc()) {
+            $data[] = $row;
+        }
+    } else {
+        echo "0 results";
+    }
+
+    // Tutup koneksi
+    $conn->close();
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -116,7 +156,7 @@
                 <span class="rating-stars">⭐⭐⭐</span>
             </div>
             <p class="hotel-old-price">Rp. <?= number_format($item['Hotel_Rent'], 0, ',', '.'); ?></p>
-            <?php 
+              <?php 
                 $jumlahDiskon = ($item['Hotel_Rent'] * $item['diskon']) / 100;
                 $hargaAkhir = $item['Hotel_Rent'] - $jumlahDiskon;
             ?>
@@ -125,7 +165,7 @@
     </div>
 </a>
 
-  
+  <?php endforeach ?>
       </div>
     </div>
 
